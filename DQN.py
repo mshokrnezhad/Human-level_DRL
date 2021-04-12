@@ -43,8 +43,8 @@ class DeepQNetwork(nn.Module):
 
         conv_state = conv3.view(conv3.size()[0], -1) # means that get the first dim and flatten others
 
-        flat1 = F.relu(self.fc1(conv_state))
-        actions = F.relu(self.fc2(flat1))
+        fully_connected1 = F.relu(self.fc1(conv_state))
+        actions = self.fc2(fully_connected1)
 
         return actions
 
